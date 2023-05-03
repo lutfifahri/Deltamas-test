@@ -26,7 +26,7 @@ switch ($_GET['action']) {
         $Tanggal    = date('Y-m-d');
 
         $querySanz = mysqli_query($koneksi, "UPDATE `ps` SET Tanggal='$Tanggal', Status ='X' WHERE KodeVendor='$kode'");
-        $query = mysqli_query($koneksi, "UPDATE `po` SET Tanggal='$Tanggal', Tipe = 'Z' WHERE KodeVendor='$kode'");
+        $query = mysqli_query($koneksi, "UPDATE `po` SET Tanggal='$Tanggal', Tipe = 'V' WHERE KodeVendor='$kode'");
 
         // echo "UPDATE `ps` SET Tipe = 'B' WHERE KodeVendor='$kode'";
         // echo "UPDATE `po` SET Tipe = 'Z' WHERE id='$id'";
