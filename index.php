@@ -56,7 +56,7 @@ include 'koneksi.php';
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <?php
-                                $query = mysqli_query($koneksi, "SELECT count(*) as totalpotempahan FROM `vendor` WHERE Tipe!='Z' ");
+                                $query = mysqli_query($koneksi, "SELECT count(*) as totalpotempahan FROM `vendor` WHERE Tipe!='Z' AND Status!='V' ");
                                 $a = mysqli_fetch_array($query);
                                 ?>
                                 <h3><?php echo $a['totalpotempahan']; ?></h3>
