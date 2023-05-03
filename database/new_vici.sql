@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2023 at 05:34 AM
+-- Generation Time: May 03, 2023 at 10:27 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -18,288 +18,163 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `new_vici`
+-- Database: `deltamas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hem`
+-- Table structure for table `po`
 --
 
-CREATE TABLE `hem` (
+CREATE TABLE `po` (
   `id` int(11) NOT NULL,
-  `harga` varchar(200) NOT NULL,
+  `KodeVendor` char(120) NOT NULL,
+  `Tanggal` date NOT NULL,
   `Tipe` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `hem`
+-- Dumping data for table `po`
 --
 
-INSERT INTO `hem` (`id`, `harga`, `Tipe`) VALUES
-(1, '897500', 'Z'),
-(2, '890000', '');
+INSERT INTO `po` (`id`, `KodeVendor`, `Tanggal`, `Tipe`) VALUES
+(1, 'vnd002', '2023-05-02', 'Z'),
+(2, 'vnd003', '2023-05-03', 'Z'),
+(3, 'vnd004', '2023-05-03', 'Z'),
+(4, 'vnd005', '2023-05-03', 'Z'),
+(5, 'vnd002', '2023-05-02', 'Z'),
+(6, 'vnd003', '2023-05-03', 'Z'),
+(7, 'vnd003', '2023-05-03', 'Z'),
+(8, 'vnd004', '2023-05-03', 'Z'),
+(9, 'vnd005', '2023-05-03', 'Z');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggan`
+-- Table structure for table `ps`
 --
 
-CREATE TABLE `pelanggan` (
+CREATE TABLE `ps` (
+  `id` int(11) NOT NULL,
+  `Kode` char(120) NOT NULL,
+  `KodeVendor` char(120) NOT NULL,
+  `Tanggal` date NOT NULL,
+  `Status` char(1) NOT NULL,
+  `Tipe` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ps`
+--
+
+INSERT INTO `ps` (`id`, `Kode`, `KodeVendor`, `Tanggal`, `Status`, `Tipe`) VALUES
+(1, 'ps001', 'vnd002', '2023-05-02', 'B', ''),
+(2, 'ps001', 'vnd003', '2023-05-03', 'B', ''),
+(3, 'ps001', 'vnd004', '2023-05-03', 'B', ''),
+(4, 'ps001', 'vnd005', '2023-05-03', 'B', 'Z'),
+(5, 'ps002', 'vnd003', '2023-05-03', 'B', ''),
+(6, 'ps002', 'vnd004', '2023-05-03', 'B', ''),
+(7, 'ps002', 'vnd005', '2023-05-03', 'B', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vendor`
+--
+
+CREATE TABLE `vendor` (
   `id` int(11) NOT NULL,
   `Kode` char(120) NOT NULL,
   `Nama` char(120) NOT NULL,
-  `Alamat` text NOT NULL,
-  `Telp` char(65) NOT NULL,
-  `Tanggal` date NOT NULL,
+  `Barang` char(120) NOT NULL,
+  `Harga` decimal(16,2) NOT NULL,
+  `Jumlah` decimal(16,2) NOT NULL,
   `Keterangan` text NOT NULL,
-  `Tipe` char(1) NOT NULL,
-  `User` char(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `poproduksi`
---
-
-CREATE TABLE `poproduksi` (
-  `id` int(11) NOT NULL,
-  `Kode` char(120) NOT NULL,
-  `KodePelanggan` char(120) NOT NULL,
-  `NamaSales` char(65) NOT NULL,
-  `TanggalTerima` date NOT NULL,
-  `TanggalEstimasiPenyelesaian` date NOT NULL,
-  `KodeProduk` char(120) NOT NULL,
-  `JenisProduksi` char(1) NOT NULL,
-  `JenisPelanggan` char(1) NOT NULL,
-  `Bahan` char(120) NOT NULL,
-  `KadarLokal` decimal(16,2) NOT NULL,
-  `Kuantitas` decimal(16,2) NOT NULL,
-  `Ukuran` decimal(16,2) NOT NULL,
-  `EstimasiBerat` decimal(16,2) NOT NULL,
-  `RangeBeratEstimasi` decimal(16,2) NOT NULL,
-  `Susut` decimal(16,2) NOT NULL,
-  `DatangEmas` decimal(16,2) NOT NULL,
-  `KadarDatangEmas` decimal(16,2) NOT NULL,
-  `DatangBerlian` decimal(16,2) NOT NULL,
-  `BeratDatangBerlian` decimal(16,2) NOT NULL,
-  `UpahPasangBerlian` decimal(16,2) NOT NULL,
-  `NamaBatuPermata` char(65) NOT NULL,
-  `BeratBatuPermata` decimal(16,2) NOT NULL,
-  `TipeIkatan` char(1) NOT NULL,
-  `Metode` char(1) NOT NULL,
-  `TipePelanggan` char(1) NOT NULL,
-  `Keterangan` text NOT NULL,
-  `Foto` char(120) NOT NULL,
-  `KrumWarna` char(65) NOT NULL,
-  `KeteranganKrum` text NOT NULL,
-  `HargaKrum` decimal(16,2) NOT NULL,
-  `Upah` decimal(16,2) NOT NULL,
-  `Budget` decimal(16,2) NOT NULL,
-  `Panjar` decimal(16,2) NOT NULL,
-  `Tipe` char(1) NOT NULL,
   `Tanggal` date NOT NULL,
-  `User` char(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `poservice`
---
-
-CREATE TABLE `poservice` (
-  `id` int(11) NOT NULL,
-  `Kode` char(120) NOT NULL,
-  `KodePelanggan` char(120) NOT NULL,
-  `NamaSales` char(65) NOT NULL,
-  `TanggalTerima` date NOT NULL,
-  `TanggalEstimasiPenyelesaian` date NOT NULL,
-  `KodeProduk` char(120) NOT NULL,
-  `JenisProduksi` char(125) NOT NULL,
-  `JenisPelanggan` char(1) NOT NULL,
-  `Bahan` char(120) NOT NULL,
-  `KadarLokal` decimal(16,2) NOT NULL,
-  `Kuantitas` decimal(16,2) NOT NULL,
-  `Ukuran` decimal(16,2) NOT NULL,
-  `EstimasiBerat` decimal(16,2) NOT NULL,
-  `RangeBeratEstimasi` decimal(16,2) NOT NULL,
-  `Susut` decimal(16,2) NOT NULL,
-  `DatangBerlian` decimal(16,2) NOT NULL,
-  `BeratDatangBerlian` decimal(16,2) NOT NULL,
-  `UpahPasangBerlian` decimal(16,2) NOT NULL,
-  `NamaBatuPermata` char(65) NOT NULL,
-  `BeratBatuPermata` decimal(16,2) NOT NULL,
-  `TipeIkatan` char(65) NOT NULL,
-  `Metode` char(65) NOT NULL,
-  `TipePelanggan` char(65) NOT NULL,
-  `Keterangan` text NOT NULL,
-  `Foto` char(120) NOT NULL,
-  `KrumWarna` char(120) NOT NULL,
-  `KeteranganKrum` text NOT NULL,
-  `HargaKrum` decimal(16,2) NOT NULL,
-  `Upah` decimal(16,2) NOT NULL,
-  `Budget` decimal(16,2) NOT NULL,
-  `Panjar` decimal(16,2) NOT NULL,
-  `Tipe` char(1) NOT NULL,
-  `Tanggal` date NOT NULL,
-  `User` char(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `potempahan`
---
-
-CREATE TABLE `potempahan` (
-  `id` int(11) NOT NULL,
-  `Kode` char(120) NOT NULL,
-  `KodePelanggan` char(120) NOT NULL,
-  `NamaSales` char(65) NOT NULL,
-  `TanggalTerima` date NOT NULL,
-  `TanggalEstimasiPenyelesaian` date NOT NULL,
-  `KodeProduk` char(120) NOT NULL,
-  `JenisProduksi` char(1) NOT NULL,
-  `JenisPelanggan` char(1) NOT NULL,
-  `Bahan` char(120) NOT NULL,
-  `KadarLokal` decimal(16,2) NOT NULL,
-  `Kuantitas` decimal(16,2) NOT NULL,
-  `Ukuran` decimal(16,2) NOT NULL,
-  `EstimasiBerat` decimal(16,2) NOT NULL,
-  `RangeBeratEstimasi` decimal(16,2) NOT NULL,
-  `Susut` decimal(16,2) NOT NULL,
-  `DatangEmas` decimal(16,2) NOT NULL,
-  `KadarDatangEmas` decimal(16,2) NOT NULL,
-  `DatangBerlian` decimal(16,2) NOT NULL,
-  `BeratDatangBerlian` decimal(16,2) NOT NULL,
-  `UpahPasangBerlian` decimal(16,2) NOT NULL,
-  `NamaBatuPermata` char(65) NOT NULL,
-  `BeratBatuPermata` decimal(16,2) NOT NULL,
-  `TipeIkatan` char(1) NOT NULL,
-  `Metode` char(1) NOT NULL,
-  `TipePelanggan` char(1) NOT NULL,
-  `Keterangan` text NOT NULL,
-  `Foto` char(120) NOT NULL,
-  `KrumWarna` char(65) NOT NULL,
-  `KeteranganKrum` text NOT NULL,
-  `HargaKrum` decimal(16,2) NOT NULL,
-  `Upah` decimal(16,2) NOT NULL,
-  `Budget` decimal(16,2) NOT NULL,
-  `Panjar` decimal(16,2) NOT NULL,
-  `Tipe` char(1) NOT NULL,
-  `Tanggal` date NOT NULL,
-  `User` char(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `iduser` int(11) NOT NULL,
-  `Kode` char(60) NOT NULL,
-  `Nama` char(60) NOT NULL,
-  `Alamat` char(60) NOT NULL,
-  `Status` char(60) NOT NULL,
-  `Username` char(60) NOT NULL,
-  `password` char(50) NOT NULL,
-  `Level` char(50) NOT NULL,
-  `User` char(50) NOT NULL,
+  `Status` char(1) NOT NULL,
   `Tipe` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `vendor`
 --
 
-INSERT INTO `user` (`iduser`, `Kode`, `Nama`, `Alamat`, `Status`, `Username`, `password`, `Level`, `User`, `Tipe`) VALUES
-(1, 'USR001', 'ADU', 'Jl.Medan', '1', 'ADU', 'cf79ae6addba60ad018347359bd144d2', '1', '', '');
+INSERT INTO `vendor` (`id`, `Kode`, `Nama`, `Barang`, `Harga`, `Jumlah`, `Keterangan`, `Tanggal`, `Status`, `Tipe`) VALUES
+(1, 'vnd001', 'asda', 'dasd', '25345.00', '345345.00', '4', '2023-05-02', '', 'Z'),
+(2, 'vnd001', 'Test', 'barang001', '120000.00', '2432.00', 'Oke', '2023-02-05', '', ''),
+(3, 'vnd002', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-02-05', 'V', ''),
+(4, 'vnd003', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-02', 'V', ''),
+(5, 'vnd004', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-02', 'V', ''),
+(6, 'vnd005', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-02', 'V', ''),
+(7, 'vnd006', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-02', '', ''),
+(8, 'vnd007', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-02', '', ''),
+(9, 'vnd008', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-02', '', ''),
+(10, 'vnd009', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-02', '', ''),
+(11, 'vnd010', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-02', '', ''),
+(12, 'vnd011', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-01', '', ''),
+(13, 'vnd012', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-01', '', ''),
+(14, 'vnd013', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-05-01', '', ''),
+(15, 'vnd014', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-04-20', '', ''),
+(16, 'vnd015', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-04-20', '', ''),
+(17, 'vnd016', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-04-20', '', ''),
+(18, 'vnd017', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-03-05', '', ''),
+(19, 'vnd018', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-03-05', '', ''),
+(20, 'vnd019', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-03-05', '', ''),
+(21, 'vnd020', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-03-05', '', ''),
+(22, 'vnd021', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-03-05', '', ''),
+(23, 'vnd022', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-03-05', '', ''),
+(24, 'vnd023', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-03-05', '', ''),
+(25, 'vnd024', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-02-20', '', ''),
+(26, 'vnd025', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-02-20', '', ''),
+(27, 'vnd026', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-02-20', '', ''),
+(28, 'vnd027', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-02-20', '', ''),
+(29, 'vnd028', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-02-20', '', ''),
+(30, 'vnd029', 'Test', 'barang0a', '12.00', '1222.00', 'Oke', '2023-02-20', '', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `hem`
+-- Indexes for table `po`
 --
-ALTER TABLE `hem`
+ALTER TABLE `po`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pelanggan`
+-- Indexes for table `ps`
 --
-ALTER TABLE `pelanggan`
+ALTER TABLE `ps`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `poproduksi`
+-- Indexes for table `vendor`
 --
-ALTER TABLE `poproduksi`
+ALTER TABLE `vendor`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `poservice`
---
-ALTER TABLE `poservice`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `potempahan`
---
-ALTER TABLE `potempahan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`iduser`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `hem`
+-- AUTO_INCREMENT for table `po`
 --
-ALTER TABLE `hem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `po`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `pelanggan`
+-- AUTO_INCREMENT for table `ps`
 --
-ALTER TABLE `pelanggan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `ps`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `poproduksi`
+-- AUTO_INCREMENT for table `vendor`
 --
-ALTER TABLE `poproduksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `poservice`
---
-ALTER TABLE `poservice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `potempahan`
---
-ALTER TABLE `potempahan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `vendor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
