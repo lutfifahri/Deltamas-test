@@ -31,7 +31,7 @@
                     <?php
                     include 'koneksi.php';
                     $no = 1;
-                    $f4hri = mysqli_query($koneksi, "SELECT * FROM `po` WHERE Tipe!='Z' ");
+                    $f4hri = mysqli_query($koneksi, "SELECT * FROM `po` WHERE Tipe!='Z' AND Tipe!='V'");
                     while ($a = mysqli_fetch_array($f4hri)) {
                         $kode = $a['KodeVendor'];
                         $isi = mysqli_query($koneksi, "SELECT * FROM `vendor` WHERE Kode = '$kode' ");
