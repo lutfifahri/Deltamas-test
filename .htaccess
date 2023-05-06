@@ -1,0 +1,34 @@
+RewriteEngine on  
+ 
+# halaman utama
+RewriteRule ^login$ index.php  
+RewriteRule ^dashboard$ dashboard.php  
+
+# registrasi mulai
+# Master PO
+RewriteRule ^barang$ barang.php
+RewriteRule ^ps$ ps.php
+RewriteRule ^po$ po.php
+# registrasi selesai
+
+
+# Terima Service
+RewriteRule ^Laporan$ Laporan.php
+RewriteRule ^LaporanRetur$ LaporanRetur.php
+# Terima Service Selesai
+
+RewriteRule ^center servicectr/img [NC,L]
+
+
+# Deny access to .htaccess
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
+
+
+# Disabled direktory browsing
+options -Indexes 
+
+# Hide the contents of directories
+IndexIgnore *
