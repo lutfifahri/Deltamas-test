@@ -53,7 +53,7 @@
                                                                                                     } else if ($a['Status'] == 'A') {
                                                                                                         echo '<button class="btn btn-warning btn-sm" disabled="disabled">Menunggu Approved... <i class="fas fa-spinner"></i></button>';
                                                                                                     } else if ($a['Status'] == 'X') {
-                                                                                                        echo '<button type="submit" id="DeleteButton1" class="btn btn-primary btn-sm" value="' . $a['id'] . '">Cek Kembali...&nbsp; <i class="fas  fa-retweet"></i></button>';
+                                                                                                        echo '<button type="submit" id="" class="btn btn-primary btn-sm" disabled="disabled" value="' . $a['id'] . '">Retur Kembali...&nbsp; <i class="fas  fa-retweet"></i></button>';
                                                                                                     } else {
                                                                                                         echo '<button class="btn btn-success btn-sm" disabled="disabled">Berhasil Di Approved... <i class="fas fa-check-square"></i></button>';
                                                                                                     }
@@ -130,7 +130,7 @@
                                 <?php
                                 include 'koneksi.php';
                                 $no = 1;
-                                $f4hri = mysqli_query($koneksi, "SELECT * FROM `vendor` WHERE Tipe!='Z' ");
+                                $f4hri = mysqli_query($koneksi, "SELECT * FROM `vendor` WHERE Tipe!='Z' AND Status!='V' ");
                                 while ($a = mysqli_fetch_array($f4hri)) {
                                 ?>
                                     <tr>

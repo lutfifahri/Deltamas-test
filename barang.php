@@ -1,16 +1,6 @@
 <?php
 include 'koneksi.php';
-$sql = 'CREATE TABLE vendor ( ' .
-    'id int NOT NULL AUTO_INCREMENT, ' .
-    'Kode char(120) NOT NULL, ' .
-    'Nama char(120) NOT NULL, ' .
-    'Barang char(120) NOT NULL, ' .
-    'Harga decimal(16,2) NOT NULL, ' .
-    'Jumlah decimal(16,2) NOT NULL, ' .
-    'Keterangan text NOT NULL, ' .
-    'Tipe char(1) NOT NULL, ' .
-    'primary key ( id ))';
-$buattabel = mysqli_query($koneksi, $sql);
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

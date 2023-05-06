@@ -26,7 +26,7 @@ date_default_timezone_set('Asia/Jakarta');
     <tr>
         <td height="27">
             <h5>
-                <center><strong>LAPORAN Purchase Order</strong> <a href="pdf_laporan.php?tgl1=<?php echo $tglawal; ?>&tgl2=<?php echo $tglakhir; ?>" target="_blank" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a></center>
+                <center><strong>LAPORAN Retur</strong> <a href="pdf_laporanRetur.php?tgl1=<?php echo $tglawal; ?>&tgl2=<?php echo $tglakhir; ?>" target="_blank" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a></center>
             </h5>
         </td>
     </tr>
@@ -57,10 +57,10 @@ date_default_timezone_set('Asia/Jakarta');
         $tglawal    = $_POST['tgl1'];
         $tglakhir   = $_POST['tgl2'];
         // tampilkan data yang sesuai dengan range tanggal yang dicari 
-        $data = mysqli_query($koneksi, "SELECT * FROM `po` WHERE (Tanggal BETWEEN '$tglawal' AND '$tglakhir') AND Tipe ='Z' ");
+        $data = mysqli_query($koneksi, "SELECT * FROM `po` WHERE (Tanggal BETWEEN '$tglawal' AND '$tglakhir') AND Tipe ='V' ");
     } else {
         //jika tidak ada tanggal dari dan tanggal ke maka tampilkan seluruh data
-        $data = mysqli_query($koneksi, "SELECT * FROM `po` AND Tipe ='Z' ");
+        $data = mysqli_query($koneksi, "SELECT * FROM `po` AND Tipe ='V' ");
     }
     // $no digunakan sebagai penomoran 
     $no = 1;

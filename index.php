@@ -1,128 +1,76 @@
-<?php
-include 'koneksi.php';
-?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Aplikasi Inventori || Deltamas</title>
+    <title>Victoeria Vici</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font Awesome -->
+    <link href="logosistem.png" rel="icon">
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- overlayScrollbars -->
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+    <link rel="stylesheet" href="data/bootstrap.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- <style>
+        body {
+            background: url(ini_vici.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        /*memberi style pada class panel default*/
+        .panel-default {
+            opacity: 0.9;
+            margin-top: 180px;
+        }
+
+        .form-group.last {
+            margin-bottom: 0px;
+        }
+    </style> -->
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-        <!-- Navbar -->
-        <?php
-        include 'menu.php';
-        ?>
-        <!-- /.navbar -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+<body>
+    <div class="container" style="margin-top: 100px">
+        <div class="row">
+            <div class="col-md-5 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" style="margin-top: 15px">
+                            <img src="LOGO-DELTA-MAS.png" alt="" width="400" height="200">
                         </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
+                        <hr>
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <?php
-                                $query = mysqli_query($koneksi, "SELECT count(*) as totalpotempahan FROM `vendor` WHERE Tipe!='Z' AND Status!='V' ");
-                                $a = mysqli_fetch_array($query);
-                                ?>
-                                <h3><?php echo $a['totalpotempahan']; ?></h3>
-
-                                <p>Vendor</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-bag"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" id="Username" placeholder="Masukkan Username" autocomplete="off">
                         </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <?php
-                                $query = mysqli_query($koneksi, "SELECT count(*) as totalpoproduksi FROM `ps` WHERE Tipe!='Z' ");
-                                $a = mysqli_fetch_array($query);
-                                ?>
-                                <h3><?php echo $a['totalpoproduksi']; ?></h3>
 
-                                <p>PS (Phurchase Requisition)</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="Password" class="form-control" id="Password" placeholder="Masukkan Password" autocomplete="off">
                         </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <?php
-                                $query = mysqli_query($koneksi, "SELECT count(*) as user FROM `po` WHERE Tipe='Z'");
-                                $a = mysqli_fetch_array($query);
-                                ?>
-                                <h3><?php echo $a['user']; ?></h3>
 
-                                <p>PO (Purchase Order)</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
+                        <button class="btn btn-login btn-block btn-primary">LOGIN</button>
+
                     </div>
-                    <!-- ./col -->
                 </div>
-
-            </section>
-            <!-- /.content -->
+            </div>
         </div>
-        <!-- /.content-wrapper -->
-
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
+    <!-- /.login-box -->
 
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
@@ -130,8 +78,114 @@ include 'koneksi.php';
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+
+    <!-- ini untuk sweeat alert nya  -->
+    <script src="data/jquery.min.js"></script>
+    <script src="data/bootstrap.min.js"></script>
+    <script src="data/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $(".btn-login").click(function() {
+
+                var Username = $("#Username").val();
+                var Password = $("#Password").val();
+                if (Username.length == "") {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    Toast.fire({
+                        type: 'warning',
+                        title: 'Maaf Username Wajib diisi !',
+                    })
+                    return false;
+
+                } else if (Password.length == "") {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    Toast.fire({
+                        type: 'warning',
+                        title: 'Password Username Wajib diisi !',
+                    })
+                    return false;
+                } else {
+                    $.ajax({
+
+                        url: "cek_login.php",
+                        type: "POST",
+                        data: {
+                            "Username": Username,
+                            "Password": Password
+                        },
+
+                        success: function(response) {
+                            if (response == "success") {
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                Toast.fire({
+                                        type: 'success',
+                                        title: 'Login Berhasil!',
+                                    })
+                                    .then(function() {
+                                        window.location.href = "dashboard";
+                                    });
+                            } else {
+
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                Toast.fire({
+                                    type: 'error',
+                                    title: 'Login Gagal !',
+                                })
+                                return false;
+
+                            }
+
+                            console.log(response);
+
+                        },
+
+                        error: function(response) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            Toast.fire({
+                                type: 'error',
+                                title: 'Server Salah !',
+                            })
+                            return false;
+
+                            console.log(response);
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        });
+    </script>
+
 </body>
 
 </html>

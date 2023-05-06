@@ -1,5 +1,6 @@
 <?php
 include 'koneksi.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,7 +113,7 @@ include 'koneksi.php';
                                     title: 'Data Berhasil Di Approved !',
                                 })
                                 .then(function() {
-                                    // location.reload();
+                                    // location.reload(); 
                                     $('#contentData').load("table-po.php");
                                 });
                         }

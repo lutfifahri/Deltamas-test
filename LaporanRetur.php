@@ -37,12 +37,12 @@ session_start();
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Data Purchase Requisition</h1>
+                            <h1>Data Laporan Retur</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Data Purchase Requisition</li>
+                                <li class="breadcrumb-item active">Data Laporan Retur</li>
                             </ol>
                         </div>
                     </div>
@@ -90,53 +90,12 @@ session_start();
             //load data mahasiswa saat aplikasi dijalankan 
             loadData();
 
-            //simpan data mahasiswa
-            $("#contentData").on("submit", "#formAdd", function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: 'service_ps.php?action=save',
-                    type: 'post',
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        if (data == 1) {
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            Toast.fire({
-                                type: 'error',
-                                title: 'Maaf Kode Sudah tersimpan !',
-                            })
-                            return false;
-                        } else {
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            Toast.fire({
-                                    type: 'success',
-                                    title: 'Data Berhasil Disimpan !',
-                                })
-                                .then(function() {
-                                    location.reload();
-                                });
-                        }
-                        // alert(data);
-                        // location.reload();
-                    }
-                });
-            });
-
             //hapus data  berdasarkan id
             $("#contentData").on("click", "#DeleteButton1", function() {
                 var id = $(this).attr("value");
                 // alert(id);
                 $.ajax({
-                    url: 'service_ps.php?action=edit',
+                    url: 'service_po.php?action=edit',
                     type: 'post',
                     data: {
                         id: id
@@ -151,55 +110,23 @@ session_start();
                             });
                             Toast.fire({
                                     type: 'success',
-                                    title: 'Data Berhasil Di Ajukan Ke Manager !',
+                                    title: 'Data Berhasil Di Approved !',
                                 })
                                 .then(function() {
                                     // location.reload();
-                                    $('#contentData').load("table-ps.php");
+                                    $('#contentData').load("table-po.php");
                                 });
                         }
+                        // alert(data);
                     }
                 });
-            });
-
-            $("#contentData").on("click", "#DeleteButton", function() {
-                if (confirm('Apakah anda yakin ingin Menghapus data ini ?')) {
-                    var id = $(this).attr("value");
-                    $.ajax({
-                        url: 'service_ps.php?action=delete',
-                        type: 'post',
-                        data: {
-                            id: id
-                        },
-                        success: function(data) {
-                            if (data == 'success') {
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                Toast.fire({
-                                        type: 'success',
-                                        title: 'Data Berhasil Dihapus !',
-                                    })
-                                    .then(function() {
-                                        // location.reload();
-                                        $('#contentData').load("table-ps.php");
-                                    });
-                            }
-                        }
-                    });
-                } else {
-                    return false;
-                }
             });
 
         })
 
         function loadData() {
             $.ajax({
-                url: 'table-ps.php',
+                url: 'table-laporanretur.php',
                 type: 'post',
                 success: function(data) {
                     $('#contentData').html(data);
